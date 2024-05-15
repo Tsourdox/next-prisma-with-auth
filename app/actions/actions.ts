@@ -2,9 +2,11 @@
 
 import { db } from "@/prisma/db";
 import { revalidatePath } from "next/cache";
-import { PostCreate } from "../validations/post";
+import { PostCreate, PostCreateSchema } from "../validations/post";
 
-export async function savePost(postData: PostCreate) {
+export async function savePost(incomingData: PostCreate) {
+  const postData = PostCreateSchema.parse(incomingData);
+
   const post = await db.post.create({
     data: {
       title: postData.title,

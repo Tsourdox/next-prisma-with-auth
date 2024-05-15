@@ -1,11 +1,16 @@
 "use client";
 
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { savePost } from "../actions/actions";
-import { PostCreate } from "../validations/post";
+import { PostCreate, PostCreateSchema } from "../validations/post";
 
 export default function PostForm() {
-  const form = useForm<PostCreate>();
+  const form = useForm<PostCreate>({ resolver: zodResolver(PostCreateSchema) });
+
+  const {
+    formState: { errors },
+  } = form;
 
   const handleSubmit = async (data: PostCreate) => {
     await savePost(data);
@@ -18,7 +23,9 @@ export default function PostForm() {
       onSubmit={form.handleSubmit(handleSubmit)}
     >
       <input {...form.register("title")} type="text" placeholder="Title" />
+      {errors.title && <span>{errors.title.message}</span>}
       <textarea {...form.register("content")} rows={4} placeholder="Content" />
+      {errors.content && <span>{errors.content.message}</span>}
       <button>Save Post</button>
     </form>
   );
