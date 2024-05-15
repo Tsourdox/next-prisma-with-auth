@@ -1,5 +1,5 @@
 import { db } from "@/prisma/db";
-import { savePost } from "./actions/actions";
+import PostForm from "./components/PostForm";
 
 export default async function Home() {
   const posts = await db.post.findMany({
@@ -9,11 +9,7 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col gap-8 py-24 items-center">
-      <form className="w-96 flex flex-col gap-2" action={savePost}>
-        <input name="title" type="text" placeholder="Title" />
-        <textarea name="content" rows={4} placeholder="Content" />
-        <button>Save Post</button>
-      </form>
+      <PostForm />
 
       <div className="w-96 flex flex-col gap-2">
         {posts.map((post) => (
