@@ -1,7 +1,11 @@
+import { auth } from "@/auth";
 import { db } from "@/prisma/db";
 import PostForm from "./components/PostForm";
+import SignInButton from "./components/SignInButton";
 
 export default async function Home() {
+  const session = await auth();
+
   const posts = await db.post.findMany({
     include: { author: true },
     orderBy: { id: "desc" },
@@ -9,7 +13,13 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col gap-8 py-24 items-center">
-      <PostForm />
+      {session?.user && (
+        <header>
+          <p>{session.user.name}</p>
+          <p>{session.user.email}</p>
+        </header>
+      )}
+      {session?.user ? <PostForm /> : <SignInButton />}
 
       <div className="w-96 flex flex-col gap-2">
         {posts.map((post) => (
