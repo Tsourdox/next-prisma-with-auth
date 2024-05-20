@@ -14,16 +14,18 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col gap-8 py-24 items-center">
-      {session?.user && (
+      {session && (
         <header>
+          <p>{session.user.id}</p>
           <p>{session.user.name}</p>
           <p>{session.user.email}</p>
+          <p>ADMIN: {session.user.isAdmin ? "YES" : "NO"}</p>
           <form action={signOutUser}>
             <button>Sign out</button>
           </form>
         </header>
       )}
-      {session?.user ? <PostForm /> : <SignInButton />}
+      {session ? <PostForm /> : <SignInButton />}
 
       <div className="w-96 flex flex-col gap-2">
         {posts.map((post) => (

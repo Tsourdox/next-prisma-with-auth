@@ -9,6 +9,7 @@ async function main() {
     create: {
       email: "mysan@mail.se",
       name: "Mysan",
+      isAdmin: true,
       posts: {
         create: [
           {

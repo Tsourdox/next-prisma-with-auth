@@ -11,7 +11,7 @@ export async function signOutUser() {
 
 export async function savePost(incomingData: PostCreate) {
   const session = await auth();
-  if (!session || !session.user || !session.user.id) return;
+  if (!session) return;
 
   const postData = PostCreateSchema.parse(incomingData);
 
