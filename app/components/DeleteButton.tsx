@@ -1,5 +1,6 @@
 "use client";
 
+import { TrashIcon } from "@heroicons/react/24/outline";
 import { Post } from "@prisma/client";
 import { useSession } from "next-auth/react";
 import { deletePost } from "../actions/actions";
@@ -17,10 +18,10 @@ export default function DeleteButton({ post }: Props) {
 
   return (
     <button
-      className="absolute top-2 right-2"
+      className="absolute top-3 right-3"
       onClick={() => deletePost(post.id)}
     >
-      🗑️
+      <TrashIcon className="size-4 text-gray-800 dark:text-neutral-400" />
     </button>
   );
 }
