@@ -1,6 +1,5 @@
 "use client";
-import { useSession } from "next-auth/react";
-import { signOutUser } from "../actions/actions";
+import { signOut, useSession } from "next-auth/react";
 import SignInButton from "./SignInButton";
 
 export default function SignInOutButton() {
@@ -9,8 +8,8 @@ export default function SignInOutButton() {
   if (!session.data) return <SignInButton />;
 
   return (
-    <form action={signOutUser}>
-      <button>{session.data.user.name} - Sign out</button>
-    </form>
+    <button onClick={() => signOut()}>
+      {session.data.user.name} - Sign out
+    </button>
   );
 }

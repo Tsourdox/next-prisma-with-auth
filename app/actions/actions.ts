@@ -1,13 +1,9 @@
 "use server";
 
-import { auth, signOut } from "@/auth";
+import { auth } from "@/auth";
 import { db } from "@/prisma/db";
 import { revalidatePath } from "next/cache";
 import { PostCreate, PostCreateSchema } from "../validations/post";
-
-export async function signOutUser() {
-  await signOut();
-}
 
 export async function savePost(incomingData: PostCreate) {
   const session = await auth();
