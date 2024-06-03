@@ -7,9 +7,5 @@ export default function SignInOutButton() {
 
   if (!session.data) return <SignInButton />;
 
-  return (
-    <button onClick={() => signOut()}>
-      {session.data.user.name} - Sign out
-    </button>
-  );
+  return <button onClick={() => signOut()}>Sign out</button>;
 }

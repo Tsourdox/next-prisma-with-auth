@@ -24,26 +24,26 @@ export default function PostForm() {
 
   return (
     <form
-      className="w-96 flex flex-col gap-2"
+      className="w-full flex flex-col gap-3"
       onSubmit={form.handleSubmit(handleSubmit)}
     >
       <input
         {...form.register("title")}
         type="text"
         placeholder="Title"
-        className="bg-slate-100 dark:bg-neutral-800 p-1"
+        className="bg-slate-100 dark:bg-neutral-800 py-2 px-3"
       />
       {errors.title && (
-        <span className="text-red-500">{errors.title.message}</span>
+        <span className="text-red-500 mb-2">{errors.title.message}</span>
       )}
       <textarea
         {...form.register("content")}
         rows={4}
         placeholder="Content"
-        className="bg-slate-100 dark:bg-neutral-800 p-1"
+        className="bg-slate-100 dark:bg-neutral-800 py-2 px-3"
       />
       {errors.content && (
-        <span className="text-red-500">{errors.content.message}</span>
+        <span className="text-red-500 mb-2">{errors.content.message}</span>
       )}
       <button className="hover:bg-slate-50 hover:dark:bg-neutral-900 p-2">
         Save Post

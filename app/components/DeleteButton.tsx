@@ -17,10 +17,7 @@ export default function DeleteButton({ post }: Props) {
   if (!user.isAdmin && user.id !== post.authorId) return null;
 
   return (
-    <button
-      className="absolute top-3 right-3"
-      onClick={() => deletePost(post.id)}
-    >
+    <button className="p-1.5" onClick={() => deletePost(post.id)}>
       <TrashIcon className="size-4 text-gray-800 dark:text-neutral-400" />
     </button>
   );

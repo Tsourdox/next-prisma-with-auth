@@ -9,23 +9,25 @@ export default async function Home() {
   });
 
   return (
-    <main className="flex flex-col gap-8 py-24 items-center">
+    <main className="w-full max-w-[36rem] flex flex-col gap-9 my-9 items-center mx-auto px-3">
       <PostForm />
 
-      <div className="w-96 flex flex-col gap-2">
+      <div className="w-full flex flex-col gap-3">
         {posts.map((post) => (
           <div
-            className="flex flex-col gap-2 bg-slate-50 dark:bg-neutral-900 p-2 relative"
+            className="flex flex-col gap-2 bg-slate-50 dark:bg-neutral-900 p-3"
             key={post.id}
           >
-            <h2 className="text-xl">{post.title}</h2>
+            <div className="flex justify-between items-start gap-3">
+              <h2 className="text-xl">{post.title}</h2>
+              <DeleteButton post={post} />
+            </div>
             <p className="text-sm text-gray-800 dark:text-neutral-400">
               {post.content}
             </p>
             <span className="italic text-gray-500 text-xs">
               {post.author.name}
             </span>
-            <DeleteButton post={post} />
           </div>
         ))}
       </div>
