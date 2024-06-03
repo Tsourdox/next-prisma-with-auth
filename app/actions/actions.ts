@@ -21,3 +21,17 @@ export async function savePost(incomingData: PostCreate) {
 
   revalidatePath("/");
 }
+
+export async function deletePost(id: number) {
+  const session = await auth();
+  if (!session) return;
+
+  const post = await db.post.findUnique({ where: { id } });
+  if (!post) return;
+
+  if (session.user.isAdmin || post.authorId === session.user.id) {
+    await db.post.delete({ where: { id } });
+  }
+
+  revalidatePath("/");
+}
