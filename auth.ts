@@ -9,6 +9,7 @@ import { db } from "./prisma/db";
 export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(db),
   providers: [github, discord, apple, google],
+  trustHost: true,
 });
 
 declare module "next-auth" {

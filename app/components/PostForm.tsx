@@ -1,11 +1,14 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSession } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { savePost } from "../actions/actions";
 import { PostCreate, PostCreateSchema } from "../validations/post";
 
 export default function PostForm() {
+  const session = useSession();
+
   const form = useForm<PostCreate>({ resolver: zodResolver(PostCreateSchema) });
 
   const {
@@ -16,6 +19,8 @@ export default function PostForm() {
     await savePost(data);
     form.reset();
   };
+
+  if (!session.data) return null;
 
   return (
     <form
