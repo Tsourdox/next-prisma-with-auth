@@ -2,6 +2,8 @@
 
 This codebase is an example of how to work with NextJS. It showcases login with AuthJS, database access with Prisma and much more.
 
+[Try it out](https://next-prisma-with-auth.vercel.app/)
+
 ## Setup
 
 - `npm install`
