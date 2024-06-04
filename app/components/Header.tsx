@@ -4,7 +4,7 @@ import SignInOutButton from "./SignInOutButton";
 
 export default async function Header() {
   return (
-    <header className="flex items-center p-3 bg-slate-200 dark:bg-neutral-900">
+    <header className="flex items-center p-3 bg-neutral-50 dark:bg-neutral-900">
       <div className="flex-1">
         <Link
           href="https://github.com/Tsourdox/next-prisma-with-auth"

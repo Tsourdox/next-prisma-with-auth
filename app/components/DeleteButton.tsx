@@ -18,7 +18,7 @@ export default function DeleteButton({ post }: Props) {
 
   return (
     <button className="p-1.5" onClick={() => deletePost(post.id)}>
-      <TrashIcon className="size-4 text-gray-800 dark:text-neutral-400" />
+      <TrashIcon className="size-4 text-neutral-800 dark:text-neutral-400" />
     </button>
   );
 }

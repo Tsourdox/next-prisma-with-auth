@@ -15,17 +15,17 @@ export default async function Home() {
       <div className="w-full flex flex-col gap-3">
         {posts.map((post) => (
           <div
-            className="flex flex-col gap-2 bg-slate-50 dark:bg-neutral-900 p-3"
+            className="flex flex-col gap-2 bg-neutral-50 dark:bg-neutral-900 p-3"
             key={post.id}
           >
             <div className="flex justify-between items-start gap-3">
               <h2 className="text-xl">{post.title}</h2>
               <DeleteButton post={post} />
             </div>
-            <p className="text-sm text-gray-800 dark:text-neutral-400">
+            <p className="text-sm text-neutral-700 dark:text-neutral-400">
               {post.content}
             </p>
-            <span className="italic text-gray-500 text-xs">
+            <span className="italic text-neutral-500 text-xs">
               {post.author.name}
             </span>
           </div>

@@ -31,7 +31,7 @@ export default function PostForm() {
         {...form.register("title")}
         type="text"
         placeholder="Title"
-        className="bg-slate-100 dark:bg-neutral-800 py-2 px-3"
+        className="bg-neutral-100 dark:bg-neutral-800 py-2 px-3"
       />
       {errors.title && (
         <span className="text-red-500 mb-2">{errors.title.message}</span>
@@ -40,12 +40,12 @@ export default function PostForm() {
         {...form.register("content")}
         rows={4}
         placeholder="Content"
-        className="bg-slate-100 dark:bg-neutral-800 py-2 px-3"
+        className="bg-neutral-100 dark:bg-neutral-800 py-2 px-3"
       />
       {errors.content && (
         <span className="text-red-500 mb-2">{errors.content.message}</span>
       )}
-      <button className="hover:bg-slate-50 hover:dark:bg-neutral-900 p-2">
+      <button className="hover:bg-neutral-50 hover:dark:bg-neutral-900 p-2">
         Save Post
       </button>
     </form>
